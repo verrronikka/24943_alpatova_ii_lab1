@@ -11,11 +11,17 @@
 
 24943_ALPATOVA_II_LAB1/
 ├── data/
+
 │   └── simpsons_dataset/
+
 ├── scripts/
+
 │   ├── train.py
+
 │   └── val.py
+
 ├── src/
+
 │   ├── data.py
 │   └── model.py
 ├── .gitignore
