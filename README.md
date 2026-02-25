@@ -9,19 +9,20 @@
 
 ## Стркутура директории
 
-📁 24943_ALPATOVA_II_LAB1
-├── 📁 data/                    # Датасет
-├──  scripts/                 # Скрипты обучения и валидации
-│   ├── train.py               # Обучение модели
-│   └── val.py                 # Валидация модели
-├──  src/                     # Исходный код
-│   ├── data.py                # Работа с данными
-│   └── model.py               # Архитектура модели
-├──  .gitignore              # Игнорируемые файлы
-├── 📄 requirements.txt        # Зависимости
-├── 📄 loss_graph.png          # График потерь
-├── 📄 confusion_matrix.png          # Матрица ошибок
-└──  model.pth               # Сохранённая модель
+24943_ALPATOVA_II_LAB1/
+├── data/
+│   └── simpsons_dataset/
+├── scripts/
+│   ├── train.py
+│   └── val.py
+├── src/
+│   ├── data.py
+│   └── model.py
+├── .gitignore
+├── requirements.txt
+├── loss_graph.png
+├── confusion_matrix.png
+└── model.pth
 
 
 
