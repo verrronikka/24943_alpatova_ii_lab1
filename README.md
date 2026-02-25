@@ -10,6 +10,7 @@
 ## Стркутура директории
 
 24943_ALPATOVA_II_LAB1/
+
 ├── data/
 
 │   └── simpsons_dataset/
