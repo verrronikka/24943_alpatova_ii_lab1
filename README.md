@@ -48,11 +48,11 @@
 
 Команда обучения:
 ```
-python train.py
+python scripts/train.py
 ```
 Команда валидации:
 ```
-python val.py
+python scripts/val.py
 ```
 ## Development
 
