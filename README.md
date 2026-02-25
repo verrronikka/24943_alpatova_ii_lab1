@@ -23,11 +23,17 @@
 ├── src/
 
 │   ├── data.py
+
 │   └── model.py
+
 ├── .gitignore
+
 ├── requirements.txt
+
 ├── loss_graph.png
+
 ├── confusion_matrix.png
+
 └── model.pth
 
 
