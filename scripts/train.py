@@ -1,18 +1,31 @@
 import sys
 import os
+import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from torchvision.transforms import transforms
 
 from src.data import get_dataloaders
 from src.model import SimpsonClassifier
 from scripts.val import validate
 
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torchvision.transforms import transforms
 
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-import matplotlib.pyplot as plt
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ['PYTHONHASHSEED'] = str(seed)
 
 
 def train_model(model, train_loader, val_loader, epochs):
@@ -21,6 +34,9 @@ def train_model(model, train_loader, val_loader, epochs):
     criterion = nn.CrossEntropyLoss()
 
     losses = []
+
+    best_val_acc = 0
+    early_stopping = 0
 
     for epoch in range(epochs):
         model.train()
@@ -54,8 +70,25 @@ def train_model(model, train_loader, val_loader, epochs):
         print(f"Train Recall:    {train_rec:.4f}")
         print(f"Train F1-Score:  {train_f1:.4f}")
 
+        val_acc, val_prec, val_rec,  val_f1 = validate(model, val_loader)
 
-    torch.save(model.state_dict(), 'model.pth')
+        print(f"Val Accuracy:  {val_acc:.4f}")
+        print(f"Val Precision: {val_prec:.4f}")
+        print(f"Val Recall:    {val_rec:.4f}")
+        print(f"Val F1-Score:  {val_f1:.4f}")
+
+        if (best_val_acc < val_acc):
+            best_val_acc = val_acc
+            early_stopping = 0
+            torch.save(model.state_dict(), 'best_model.pth')
+        else:
+            early_stopping += 1
+
+            if (early_stopping > 5):
+                print(f"EARLY STOPPING - Epoch {epoch + 1}/{epochs}")
+                break
+
+    torch.save(model.state_dict(), 'last_model.pth')
 
     build_graph_loss(losses)
 
@@ -72,6 +105,8 @@ def build_graph_loss(losses):
 
 
 def main():
+    set_seed(42)
+
     root_dir = "./data/simpsons_dataset"
     train_transform = transforms.Compose([
         transforms.ToPILImage(),
@@ -93,7 +128,7 @@ def main():
     _, val_loader = get_dataloaders(root_dir, val_transform)
 
     model = SimpsonClassifier()
-    train_model(model, train_loader, val_loader, 10)
+    train_model(model, train_loader, val_loader, 30)
 
 
 if __name__ == "__main__":

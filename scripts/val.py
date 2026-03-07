@@ -72,7 +72,7 @@ def main():
     _, val_loader = get_dataloaders(root_dir, transform)
 
     model = SimpsonClassifier()
-    model.load_state_dict(torch.load("model.pth"))
+    model.load_state_dict(torch.load("best_model.pth"))
     acc, prec, rec, f1 = validate(model, val_loader)
 
     print(f"Accuracy:  {acc:.4f}")
