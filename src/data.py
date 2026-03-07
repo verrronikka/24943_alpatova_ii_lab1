@@ -51,3 +51,31 @@ def get_dataloaders(root_dir, transform):
         val_dataset, batch_size=32, shuffle=True, num_workers=4)
 
     return train_loader, val_loader
+
+
+def get_test_loaders(train_dir, test_dir, transform):
+    images, labels = [], []
+
+    classes = sorted([d for d in os.listdir(train_dir)])
+
+    class_idx = {name: idx for idx, name in enumerate(classes)}
+
+    folder = os.path.join(test_dir, os.listdir(test_dir)[0])
+
+    for img in os.listdir(folder):
+        img_path = os.path.join(folder, img)
+        img = img.rsplit('.', 1)[0]
+        parts = img.split('_')
+
+        if len(parts) >= 2:
+            img = '_'.join(parts[:-1]).lower()
+
+        if os.path.isfile(img_path):
+            images.append(img_path)
+            labels.append(class_idx[img])
+
+    test_dataset = SimpsonDataset(images, labels, transform)
+    test_loader = DataLoader(
+        test_dataset, batch_size=32, shuffle=True, num_workers=4)
+
+    return test_loader
