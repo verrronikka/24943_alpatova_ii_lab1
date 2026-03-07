@@ -10,6 +10,7 @@
 ## Стркутура директории
 
 24943_ALPATOVA_II_LAB1/
+
 ├── data/
 
 │   └── simpsons_dataset/
@@ -48,11 +49,11 @@
 
 Команда обучения:
 ```
-python train.py
+python scripts/train.py
 ```
 Команда валидации:
 ```
-python val.py
+python scripts/val.py
 ```
 ## Development
 
@@ -82,3 +83,9 @@ pip install -r requirements.txt
 | 8/10  | 0.5504     | 84.27%    | 84.27%     | 84.27%    | 84.23%   | 79.72%  | 80.83%   | 79.72%  | 79.43% |
 | 9/10  | 0.5084     | 85.33%    | 85.29%     | 85.33%    | 85.29%   | 81.82%  | 82.46%   | 81.82%  | 81.57% |
 | 10/10 | 0.4789     | 86.04%    | 86.00%     | 86.04%    | 86.00%   | 81.44%  | 82.14%   | 81.44%  | 81.11% |
+
+<img width="1760" height="890" alt="image" src="https://github.com/user-attachments/assets/5a9af036-a241-4ed5-8b46-430cbf0edf72" />
+
+<img width="1019" height="882" alt="image" src="https://github.com/user-attachments/assets/8af036bd-a55f-4344-9a62-c93d54164e27" />
+
+
