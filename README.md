@@ -186,9 +186,11 @@ SQD + momentium
 
 ```Тест содеражал в себе 20 классов```
 
-<img width="1791" height="893" alt="image" src="https://github.com/user-attachments/assets/d28e5a71-0304-429c-90a4-181ac57781bc" />
+<img width="1807" height="1045" alt="image" src="https://github.com/user-attachments/assets/c5cb425f-d62d-4173-af67-1182f56f9ffa" />
 
-<img width="1275" height="1059" alt="image" src="https://github.com/user-attachments/assets/9eaa88fb-5eb1-48c9-98c3-0329fbd8df03" />
+<img width="1814" height="1046" alt="image" src="https://github.com/user-attachments/assets/a8641352-388c-426d-941f-6461fc0be1f4" />
+
+
 
 
 
